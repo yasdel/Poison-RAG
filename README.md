@@ -19,7 +19,7 @@ By modifying item metadata (e.g., adding adversarial tags), an attacker can subt
 
 The figure below illustrates the RAG-based recommender system pipeline. It highlights where adversarial data poisoning (in red) can be introduced to manipulate item exposures. By altering textual descriptions and tags at the retrieval stage, the attacker aims to shift item popularity or introduce specific biases that affect the final output recommendations.
 
-![Poison-RAG Pipeline](RAG_poision.png)
+![Poison-RAG Pipeline](PoisonRAG.png)
 
 **Figure:** The three-stage RAG pipeline (Retrieval, Augmentation, Generation). The adversarial poisoning occurs in the Retrieval stage by modifying textual metadata, thereby influencing the ranking of items and ultimately affecting final recommendations.
 
