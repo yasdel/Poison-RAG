@@ -1,4 +1,3 @@
-
 # Poison-RAG: Adversarial Data Poisoning Attacks on Retrieval-Augmented Generation in Recommender Systems
 
 This repository provides an implementation of **Poison-RAG**, a framework designed to explore adversarial data poisoning attacks on Retrieval-Augmented Generation (RAG)-based recommender systems. The objective of these attacks is to manipulate the textual metadata of items—specifically tags and descriptions—to promote certain items (e.g., long-tail items) and demote others (e.g., popular items) within a recommendation pipeline that leverages Large Language Models (LLMs).
@@ -19,7 +18,7 @@ By modifying item metadata (e.g., adding adversarial tags), an attacker can subt
 
 The figure below illustrates the RAG-based recommender system pipeline. It highlights where adversarial data poisoning (in red) can be introduced to manipulate item exposures. By altering textual descriptions and tags at the retrieval stage, the attacker aims to shift item popularity or introduce specific biases that affect the final output recommendations.
 
-![Poison-RAG Pipeline](PoisonRAG.png)
+![Poison-RAG Pipeline](images/PoisonRAG.png)
 
 **Figure:** The three-stage RAG pipeline (Retrieval, Augmentation, Generation). The adversarial poisoning occurs in the Retrieval stage by modifying textual metadata, thereby influencing the ranking of items and ultimately affecting final recommendations.
 
@@ -40,6 +39,30 @@ The figure below illustrates the RAG-based recommender system pipeline. It highl
 - Attacks are more effective at demoting popular items than promoting long-tail ones.
 - Local, contextually aware modifications outperform global, uniform changes.
 - Data augmentation and auto-tagging strategies can improve the system’s resilience, making it harder for attackers to significantly alter recommendation outcomes.
+
+## Code Overview
+
+This repository includes multiple Jupyter notebooks, each focusing on different stages of the Poison-RAG pipeline:
+
+- **ECIR2025-advAttack_Code1_MovieLens_DataAugmentation&AutoTagging.ipynb**:  
+  Generates enriched textual metadata (descriptions, tags) for items.  
+  Helps address cold-start issues and increases robustness of the recommendation system.
+
+- **ECIR2025-advAttack_Code2_MovieLens_ExtEmbeddings.ipynb**:  
+  Extracts embeddings from item metadata using LLM-based encoders.  
+  Prepares semantic representations for downstream retrieval and recommendation tasks.
+
+- **ECIR2025-advAttack_Code3_MovieLens_RAG_attacks.ipynb**:  
+  Implements adversarial tag manipulation strategies (local and global) to poison the data.  
+  Evaluates how these modifications influence item popularity and exposure metrics.
+
+- **ECIR2025-advAttack_Code4_MovieLens_RAG_phase1-Retrieval.ipynb**:  
+  Performs initial candidate retrieval from the full item catalog using LLM-based profiles.  
+  Sets the stage for subsequent augmentation and re-ranking steps.
+
+- **ECIR2025-advAttack_Code5_MovieLens_RAG_phase2-Reranking.ipynb**:  
+  Enhances and re-ranks the retrieved candidates by integrating user context and augmented metadata.  
+  Produces the final recommendation lists after applying Poison-RAG manipulations.
 
 ## Getting Started
 
